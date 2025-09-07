@@ -412,7 +412,7 @@ export default function Quiz() {
   const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black-800 via-black-800 to-black-800 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-black-800 via-black-800 to-black-800 flex flex-col overflow-hidden">
       <Header />
 
       {/* Page Header */}
@@ -437,7 +437,7 @@ export default function Quiz() {
         </div>
       </div>
 
-      <div className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+      <div className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         <Card
           className="bg-gradient-to-br from-black-800 via-black-800 to-black-700 border-2 border-gold-400 shadow-xl relative flex flex-col min-h-[calc(100vh-16rem)]
         before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:translate-x-[-200%] before:animate-shimmer before:transition-transform"
@@ -502,7 +502,7 @@ export default function Quiz() {
                     {quizQuestions[currentQuestion].question}
                   </h3>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-4 max-w-7xl mx-auto">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-4 max-w-full mx-auto">
                     {quizQuestions[currentQuestion].options.map((option) => {
                       const IconComponent = option.icon;
                       return (
@@ -623,7 +623,7 @@ export default function Quiz() {
                     Take Quiz Again
                   </Button>
                   <Button
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate("/fragrances")}
                     className="flex-1 bg-gold-600 hover:bg-gold-700 text-white font-semibold py-2 sm:py-3 text-sm sm:text-base"
                   >
                     <span className="hidden sm:inline">
