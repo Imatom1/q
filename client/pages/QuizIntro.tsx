@@ -126,7 +126,7 @@ export default function QuizIntro() {
 
           <Button
             variant="outline"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/fragrances")}
             className="w-full border-gold-300 text-gold-300 hover:bg-black-800 hover:text-white"
           >
             Browse All Fragrances Instead
