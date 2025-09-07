@@ -9,9 +9,9 @@ export function Header() {
   const location = useLocation();
 
   const navigation = [
-    { name: "Fragrances", href: "/", icon: Crown },
-    { name: "Compare", href: "/compare", icon: Scale },
     { name: "Quiz", href: "/quiz-intro", icon: Heart },
+    { name: "Fragrances", href: "/fragrances", icon: Crown },
+    { name: "Compare", href: "/compare", icon: Scale },
     { name: "Mixer", href: "/mixer", icon: Beaker },
   ];
 
@@ -43,18 +43,21 @@ export function Header() {
               const Icon = item.icon;
               const isActive = item.href === location.pathname;
 
+              const base = "flex items-center gap-2 px-3 py-2 rounded-lg font-semibold transition-all duration-200";
+              const emphasized = item.name === "Quiz";
+              const classes = emphasized
+                ? `${base} bg-gold-500 text-black-950 shadow-md`
+                : isActive
+                ? `${base} bg-gold-500 text-black-950 shadow-md`
+                : `${base} text-gold-300 hover:bg-gold-600 hover:text-black-950`;
+
               return (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg font-semibold transition-all duration-200 ${
-                    isActive
-                      ? "bg-gold-500 text-black-950 shadow-md"
-                      : "text-gold-300 hover:bg-gold-600 hover:text-black-950"
-                  }`}
-                >
+                <Link key={item.name} to={item.href} className={classes}>
                   <Icon className="w-6 h-6" />
                   {item.name}
+                  {item.name === "Quiz" && (
+                    <Badge className="ml-1 bg-gold-600 text-black-950">Start here</Badge>
+                  )}
                 </Link>
               );
             })}
@@ -84,6 +87,7 @@ export function Header() {
               {navigation.map((item) => {
                 const Icon = item.icon;
                 const isActive = item.href === location.pathname;
+                const emphasized = item.name === "Quiz";
 
                 return (
                   <Link
@@ -91,13 +95,18 @@ export function Header() {
                     to={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`flex items-center gap-3 px-3 py-2 rounded-lg font-semibold transition-colors ${
-                      isActive
+                      emphasized
+                        ? "bg-gold-500 text-black-950"
+                        : isActive
                         ? "bg-gold-500 text-black-950"
                         : "text-gold-300 hover:bg-gold-600 hover:text-black-950"
                     }`}
                   >
                     <Icon className="w-6 h-6" />
                     {item.name}
+                    {emphasized && (
+                      <Badge className="ml-1 bg-gold-600 text-black-950">Start here</Badge>
+                    )}
                   </Link>
                 );
               })}

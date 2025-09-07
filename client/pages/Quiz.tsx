@@ -412,7 +412,7 @@ export default function Quiz() {
   const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black-800 via-black-800 to-black-800 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-black-800 via-black-800 to-black-800 flex flex-col overflow-hidden">
       <Header />
 
       {/* Page Header */}
@@ -437,7 +437,7 @@ export default function Quiz() {
         </div>
       </div>
 
-      <div className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+      <div className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         <Card
           className="bg-gradient-to-br from-black-800 via-black-800 to-black-700 border-2 border-gold-400 shadow-xl relative flex flex-col min-h-[calc(100vh-16rem)]
         before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:translate-x-[-200%] before:animate-shimmer before:transition-transform"
@@ -498,11 +498,11 @@ export default function Quiz() {
             {!showResults ? (
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-gold-300 mb-6 text-center">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gold-300 mb-6 text-center break-words whitespace-normal hyphens-auto px-2">
                     {quizQuestions[currentQuestion].question}
                   </h3>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-4 max-w-7xl mx-auto">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-4 max-w-full mx-auto">
                     {quizQuestions[currentQuestion].options.map((option) => {
                       const IconComponent = option.icon;
                       return (
@@ -510,18 +510,18 @@ export default function Quiz() {
                           key={option.id}
                           type="button"
                           onClick={() => handleAnswer(option)}
-                          className="group relative block w-full rounded-2xl border border-gold-400/60 bg-black-900/70 hover:bg-black-800 transition-all duration-200 hover:shadow-[0_0_0_2px_rgba(253,216,53,0.4)] focus:outline-none focus:ring-2 focus:ring-gold-500/40"
-                          style={{ height: "clamp(9rem, 18vw, 12rem)" }}
+                          className="group relative block w-full rounded-2xl border border-gold-400/60 bg-black-900/70 hover:bg-black-800 transition-all duration-200 hover:shadow-[0_0_0_2px_rgba(253,216,53,0.4)] focus:outline-none focus:ring-2 focus:ring-gold-500/40 overflow-hidden"
+                          style={{ minHeight: "9rem" }}
                         >
                           <div className="flex flex-col h-full">
                             <div className="flex items-center justify-center p-3 sm:p-4 flex-1">
                               <IconComponent strokeWidth={2} className="text-gold-500 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16" />
                             </div>
                             <div className="flex flex-col items-center justify-center text-center px-3 sm:px-4 py-2 gap-1">
-                              <div className="font-semibold text-xs sm:text-sm leading-tight break-words">
+                              <div className="font-semibold text-xs sm:text-sm leading-tight break-words whitespace-normal hyphens-auto">
                                 {option.text}
                               </div>
-                              <div className="text-[10px] sm:text-xs text-gold-300 leading-relaxed break-words px-1">
+                              <div className="text-[10px] sm:text-xs text-gold-300 leading-relaxed break-words whitespace-normal hyphens-auto px-1">
                                 {option.traits.slice(0, 3).join(", ")}
                               </div>
                             </div>
@@ -623,7 +623,7 @@ export default function Quiz() {
                     Take Quiz Again
                   </Button>
                   <Button
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate("/fragrances")}
                     className="flex-1 bg-gold-600 hover:bg-gold-700 text-white font-semibold py-2 sm:py-3 text-sm sm:text-base"
                   >
                     <span className="hidden sm:inline">
