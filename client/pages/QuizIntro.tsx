@@ -28,7 +28,7 @@ export default function QuizIntro() {
               <Heart className="w-7 h-7 text-gold-700" />
               <Sparkles className="w-3 h-3 text-gold-500 absolute -top-1 -right-1" />
             </div>
-            <h1 className="text-2xl font-bold text-gold-300">Fragrance Quiz</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gold-300">Fragrance Quiz</h1>
           </div>
           <p className="text-sm text-gold-300 mb-3">
             Find your perfect scent in under 3 minutes
@@ -117,12 +117,13 @@ export default function QuizIntro() {
         <div className="space-y-3">
           <Button
             onClick={() => navigate("/quiz")}
-            className="w-full bg-gold-600 hover:bg-gold-700 text-black-800 font-semibold py-4 text-base"
+            className="w-full bg-gold-600 hover:bg-gold-700 text-black-900 font-semibold py-5 text-lg shadow-lg ring-2 ring-gold-400"
           >
             <Heart className="w-4 h-4 mr-2" />
             Start Your Fragrance Journey
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
+          <p className="text-xs text-gold-400 text-center">Most users start here</p>
 
           <Button
             variant="outline"
